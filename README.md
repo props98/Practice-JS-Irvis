@@ -13,3 +13,6 @@
 7. git remote add origin ~~Repository name~~
 8. git branch -M main
 9. git push -u origin main
+
+## День второй #2
+> Выполнена реализация модальных окон на сайте по ТЗ
