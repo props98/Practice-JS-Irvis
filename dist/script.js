@@ -18181,7 +18181,7 @@ var images = function images() {
   var imgPopup = document.createElement('div'),
       workSection = document.querySelector('.works'),
       bigImage = document.createElement('img'),
-      body = document.querySelector('body');
+      scroll = calcScroll();
   imgPopup.classList.add('popup');
   workSection.appendChild(imgPopup);
   imgPopup.style.justifyContent = 'center';
@@ -18196,16 +18196,29 @@ var images = function images() {
       imgPopup.style.display = 'flex';
       var path = target.parentNode.getAttribute('href');
       bigImage.setAttribute('src', path);
-      body.style.overflow = 'hidden';
-      console.log(bigImage);
+      document.body.style.marginRight = "".concat(scroll, "px");
+      document.body.style.overflow = 'hidden';
       bigImage.style.height = '500px';
     }
 
     if (target && target.matches('div.popup')) {
+      document.body.style.marginRight = "0px";
       imgPopup.style.display = 'none';
-      body.style.overflow = '';
+      document.body.style.overflow = '';
     }
-  }); //todo: Доделать ограничение увеличенных картинок
+  });
+
+  function calcScroll() {
+    var div = document.createElement('div');
+    div.style.width = '50px';
+    div.style.height = '50px';
+    div.style.overflowY = 'scroll';
+    div.style.visibility = 'hidden';
+    document.body.appendChild(div);
+    var scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+    return scrollWidth;
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (images);
