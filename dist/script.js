@@ -18180,11 +18180,12 @@ __webpack_require__.r(__webpack_exports__);
 var images = function images() {
   var imgPopup = document.createElement('div'),
       workSection = document.querySelector('.works'),
-      bigImage = document.createElement('img');
+      bigImage = document.createElement('img'),
+      body = document.querySelector('body');
   imgPopup.classList.add('popup');
   workSection.appendChild(imgPopup);
   imgPopup.style.justifyContent = 'center';
-  imgPopup.style.alighItems = 'center';
+  imgPopup.style.alignItems = 'center';
   imgPopup.style.display = 'none';
   imgPopup.appendChild(bigImage);
   workSection.addEventListener('click', function (evt) {
@@ -18195,10 +18196,14 @@ var images = function images() {
       imgPopup.style.display = 'flex';
       var path = target.parentNode.getAttribute('href');
       bigImage.setAttribute('src', path);
+      body.style.overflow = 'hidden';
+      console.log(bigImage);
+      bigImage.style.height = '500px';
     }
 
     if (target && target.matches('div.popup')) {
       imgPopup.style.display = 'none';
+      body.style.overflow = '';
     }
   }); //todo: Доделать ограничение увеличенных картинок
 };
